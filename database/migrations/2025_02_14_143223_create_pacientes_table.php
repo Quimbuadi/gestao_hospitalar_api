@@ -17,10 +17,8 @@ return new class extends Migration
             $table->date('data_nascimento');
             $table->char('sexo', 1)->nullable();
             $table->string('endereco')->nullable();
-            $table->string('telefone', 15)->nullable();
+            $table->integer('telefone')->nullable();
             $table->string('email')->nullable();
-            $table->string('cpf', 14)->unique();
-            $table->string('rg', 20)->unique();
             $table->timestamps();
         });
     }
