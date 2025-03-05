@@ -14,8 +14,11 @@ class Consulta extends Model
     protected $primaryKey = "consulta_id";
     protected $fillable = [
         "consulta_id",
-        "medico_id",
+        "profissional_saude_id",
         "paciente_id",
+        "tipo_consulta_id",
+        "tipo_servico_id",
+        "prioridade",
         "data_consulta",
         "status",
         "observacoes",
@@ -26,8 +29,16 @@ class Consulta extends Model
         return $this->belongsTo(Paciente::class, 'paciente_id');
     }
 
-    public function medico(): BelongsTo
+    public function profissionalSaude(): BelongsTo
     {
-        return $this->belongsTo(Medico::class, 'medico_id');
+        return $this->belongsTo(ProfissionalSaude::class, 'profissional_saude_id');
+    }
+    public function tipoConsulta(): BelongsTo
+    {
+        return $this->belongsTo(TipoConsulta::class, 'tipo_consulta_id');
+    }
+    public function tipoServico(): BelongsTo
+    {
+        return $this->belongsTo(TipoServico::class, 'tipo_servico_id');
     }
 }

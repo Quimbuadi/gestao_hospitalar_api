@@ -20,6 +20,7 @@ class Paciente extends Model
         'endereco',
         'telefone',
         'email',
+        'grupo_sanguineo'
     ];
       /**
      * The function "consulta" establishes a BelongsTo relationship with the Consulta model in PHP.
@@ -29,5 +30,10 @@ class Paciente extends Model
     public function consulta(): HasMany
     {
         return $this->hasMany(Consulta::class, 'paciente_id');
+    }
+
+    public function triagem(): HasMany
+    {
+        return $this->hasMany(Triagem::class, 'paciente_id');
     }
 }
